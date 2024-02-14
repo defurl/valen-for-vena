@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Gift</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      font-size: 20px;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    .valentine-img {
+      width: 600px;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .question {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+    .btn {
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .yes-btn {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .no-btn {
+      background-color: #f44336;
+      color: white;
+    }
+    .no-btn:hover {
+      transform: scale(1.1);
+    }
+    .happier-text {
+      font-size: 50px;
+      color: #4CAF50;
+      font-style: italic;
+      display: none;
+    }
+    .happy-image {
+      display: none;
+      position: absolute;
+      left: 42%;
+      width: 600px;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <img src="valen1.jpg" alt="doyouwannabemybebiii" class="valentine-img">
+  <p class="question">Do you want to be all my valentines uwu ?</p>
+  <button class="btn yes-btn">Yes</button>
+  <button class="btn no-btn">No</button>
+  <p class="happier-text"></p>
+  <img src="valen2.jpg" alt="yayyy" class="happy-image">
+</div>
+
+<script>
+  const question = document.querySelector(' .question')
+  const yesBtn = document.querySelector('.yes-btn');
+  const noBtn = document.querySelector('.no-btn');
+  const happierText = document.querySelector('.happier-text');
+  const happyImage = document.querySelector('.happy-image');
+  const valentineImg = document.querySelector('.valentine-img');
+  
+  const happyReaction = "I love you too hihihihihihihihi";
+  const sadReactions = [
+    "em ghéc anh rùi :(",
+    "đìu dì nàm iem bấm vô đây :<",
+    "sao iem vẫn bấm nữa zùi",
+    "huhu em chán anh zùiiii",
+    "anh nà iem bé chu che zậy",
+    "mà em nại bấm hong như vậy",
+    "em hong thấy em bé chu che bùn òa",
+    "hong chịu hong chịu douuu",
+    "hóa ra nà zậy",
+    "em ghéc híu zậy gùi",
+    "mọi thứ sẽ sụp đổ mấc thui",
+    "híu nhạc nhõngg",
+    "híu đao đớn",
+    "em bỏ bíe híu trong góc",
+    "híu bùn thiu rùi",
+    "hong cóa ai ở đây",
+    "lạnh nhắm lun",
+    "hong bíc phại nàm rì hếc",
+    "hong cóa em hong chịu dou",
+    "nên nà"
+  ];
+
+  let clickCount = 0;
+  noBtn.addEventListener('click', () => {
+    if (clickCount < sadReactions.length) {
+      const newWidth = 200 + clickCount * 50;
+      const newHeight = 50 + clickCount * 10;
+      yesBtn.style.width = `${newWidth}px`;
+      yesBtn.style.height = `${newHeight}px`;
+      yesBtn.style.fontSize = `${20 + clickCount}px`;
+      happierText.textContent = sadReactions[clickCount];
+      happierText.style.display = 'block';
+      clickCount++;
+    } else {
+      happierText.style.display = 'block';
+      yesBtn.style.width = '100vw'; // Take up whole screen
+      yesBtn.style.height = '100vh';
+      yesBtn.style.fontSize = '100px'; // Make font size big enough to overwhelm the screen
+      noBtn.style.display = 'none'; // Hide the "No" button
+    }
+  });
+
+  yesBtn.addEventListener('click', () => {
+    happierText.textContent = happyReaction;
+    happierText.style.display = 'block';
+    happyImage.src = 'valen2.jpg'; // Change image source to your happy image
+    happyImage.style.display = 'block';
+    valentineImg.style.display = 'none';
+    noBtn.style.display = 'none';
+    yesBtn.style.display = 'none';
+    question.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
